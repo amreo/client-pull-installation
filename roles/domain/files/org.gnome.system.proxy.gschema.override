@@ -1,0 +1,8 @@
+[org.gnome.system.proxy]
+mode='manual'
+[org.gnome.system.proxy.http]
+host='{{ ansible_local.domain.serverfqdn }}'
+port=3128
+[org.gnome.system.proxy.https]
+host='{{ ansible_local.domain.serverfqdn }}'
+port=3128

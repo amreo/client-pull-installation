@@ -8,6 +8,12 @@
     backup: yes
   register: cfg_glib_users
 
+- name:  Setting system proxy
+  copy:
+    src: org.gnome.system.proxy.gschema.override
+    dest: /usr/share/glib-2.0/schemas/org.gnome.system.proxy.gschema.override
+  register: cfg_glib_proxy
+
 - name: Visualizing mounted drives on desktop
   copy:
     src: org.gnome.nautilus.desktop.gschema.override
@@ -25,4 +31,4 @@
 - name: Recompiling glib2 schemas
   shell: glib-compile-schemas --strict /usr/share/glib-2.0/schemas/
   sudo: yes
-  when: cfg_glib_users|changed or cfg_glib_mounted|changed or cfg_keyb_layout|changed
+  when: cfg_glib_proxy|changed or cfg_glib_users|changed or cfg_glib_mounted|changed or cfg_keyb_layout|changed
