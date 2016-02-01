@@ -1,7 +1,7 @@
 ---
 
 - name: Set apt proxies
-  copy:
+  template:
     src: 95proxies
     dest: /etc/apt/apt.conf.d/95proxies
     force: yes
